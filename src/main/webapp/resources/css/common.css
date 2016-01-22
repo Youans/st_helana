@@ -1,0 +1,32 @@
+.header{min-height: 100px;background-color: #6D0C3A;}
+#dataContent{float: left;padding: 38px;}
+.left img{width: 30%;float: left;}
+label{display:block;}
+.errorMsg{display: block;color:red; }
+.row{margin:10px;}
+.header h1{text-align: center;font-size: 100px;}
+select{overflow-y: auto;}
+.select-many{    width: 100%;display: block;
+                 overflow-y: auto; max-height:200px;}
+.select-many option{
+    position:relative;
+    left:30%;
+
+}
+.listing-page th{
+    text-align: center;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 16px;
+
+}
+.listing-page thead{min-height: 50px;background-color:gainsboro;}
+.listing-page td{    padding: 30px;
+                     padding-left: 10px;
+                     padding-right: 10px;
+                     border: 1px solid #F1F1F1;
+                     word-wrap: break-word;
+                     max-width: 120px;
+                     vertical-align: middle;
+                     text-align: center;
+}
+.register-form .col-md-6,.register-form .col-md-12{padding-left:0px;}

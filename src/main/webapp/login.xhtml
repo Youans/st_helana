@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/templates/BaseTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Register</ui:define>
+    <ui:define name="content">
+        Login Servant
+        <h:form prependId="false"  enctype="multipart/form-data">
+
+            <h:panelGroup layout="block" styleClass="row">
+                <label for="email">Email</label>
+                <h:inputText id="email" value="#{loginAction.password}" p:placeHolder="Email"  required="true">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                </h:inputText>
+                <h:message for="email" styleClass="errorMsg"/>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="row">
+                <label for="password">Password</label>
+                <h:inputSecret id="password" value="#{loginAction.password}" p:placeHolder="Password">
+                </h:inputSecret>
+                <h:message for="password" styleClass="errorMsg"/>
+            </h:panelGroup>
+
+            <h:panelGroup styleClass="errorMsg" rendered="#{not empty loginAction.msg}">#{loginAction.msg}</h:panelGroup>
+            <h:commandButton id="submitBtn" value="Login" action="#{loginAction.login()}"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
+

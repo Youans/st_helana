@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="Default_Persistence_Unit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <non-jta-data-source>jdbc/defaultDataSource</non-jta-data-source>
+    <class>com.shs.entities.Service</class>
+    <class>com.shs.entities.ServantService</class>
+    <class>com.shs.entities.Study</class>
+    <class>com.shs.entities.ServantServiceStatus</class>
+    <class>com.shs.entities.ServiceType</class>
+    <class>com.shs.entities.ServantStudy</class>
+    <class>com.shs.entities.ServantWeekend</class>
+    <class>com.shs.entities.ServantStudyStatus</class>
+    <class>com.shs.entities.Hobbie</class>
+    <class>com.shs.entities.ServantHobbie</class>
+    <class>com.shs.entities.Servant</class>
+    <properties>
+      <property name="hibernate.transaction.auto_close_session" value="false"/>
+      <property name="hibernate.max_fetch_depth" value="0"/>
+      <property name="hibernate.connection.release_mode" value="auto"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.cglib.use_reflection_optimizer" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>

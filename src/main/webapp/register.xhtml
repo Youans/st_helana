@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/templates/BaseTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="title">Servant Information</ui:define>
+    <f:metadata>Categories
+
+        <f:viewAction action="#{registerAction.init()}"/>
+    </f:metadata>
+    <ui:define name="content">
+        <h1 class="text-center">Servant Information</h1>
+        <h:form prependId="false" styleClass="col-md-12 register-form" enctype="multipart/form-data">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="firstName">#{Properites.register_firstName}</label>
+                        <h:inputText id="firstName" styleClass="form-control" value="#{registerAction.entity.firstName}" p:placeHolder="First Name"  required="true"/>
+                        <h:message for="firstName" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="secondName">Second Name</label>
+                        <h:inputText id="secondName" styleClass="form-control" value="#{registerAction.entity.secondName}" p:placeHolder="Second Name"  required="true"/>
+                        <h:message for="secondName" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="lastName">Last Name</label>
+                        <h:inputText id="lastName" styleClass="form-control" value="#{registerAction.entity.lastName}" p:placeHolder="Last Name"  required="true"/>
+                        <h:message for="lastName" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="email">Email</label>
+                        <h:inputText id="email" styleClass="form-control" value="#{registerAction.entity.email}" p:placeHolder="Email"  required="true">
+                            <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                            <f:validator validatorId="ServantValidator"/>
+                        </h:inputText>
+                        <h:message for="email" styleClass="errorMsg"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="twitter">Twitter</label>
+                        <h:inputText id="twitter" styleClass="form-control" value="#{registerAction.entity.twitter}" p:placeHolder="Twtitter">
+                        </h:inputText>
+                        <h:message for="twitter" styleClass="errorMsg"/>
+                    </h:panelGroup>    
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="facebook">Facebook</label>
+                        <h:inputText id="facebook" styleClass="form-control" value="#{registerAction.entity.facebook}" p:placeHolder="Facebook">
+                        </h:inputText>
+                        <h:message for="facebook" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                </div>
+                <div class="col-md-6">
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="address">Address</label>
+                        <h:inputText id="address" styleClass="form-control" value="#{registerAction.entity.address}" p:placeHolder="Address"  required="true">
+                        </h:inputText>
+                        <h:message for="address" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="telephone">Telephone</label>
+                        <h:inputText id="telephone" styleClass="form-control" value="#{registerAction.entity.phone}" p:placeHolder="Telephone"  required="true">
+                        </h:inputText>
+                        <h:message for="telephone" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="mobile">Mobile Phone</label>
+                        <h:inputText id="mobile" styleClass="form-control" value="#{registerAction.entity.mobile}" p:placeHolder="Mobile Phone"  required="true">
+                        </h:inputText>
+                        <h:message for="mobile" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="birthday">Birthday dd-mm-yyy</label>
+                        <h:inputText id="birthday" styleClass="form-control" value="#{registerAction.entity.birthday}" p:placeHolder="Birthday dd-mm-yyy" converterMessage="Please enter valid date" required="true">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:inputText>
+                        <h:message for="birthday" styleClass="errorMsg"/>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="birthday">Gender</label>
+                        <h:selectOneRadio  id="gender"  value="#{registerAction.entity.gender}" >
+                            <f:selectItem itemLabel="Male&nbsp;&nbsp;" itemValue="M"/>
+                            <f:selectItem itemLabel="Female" itemValue="F" />
+                        </h:selectOneRadio>
+                        <h:message for="gender" styleClass="errorMsg"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="birthday">Personal photo</label>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <h:inputFile id="personalPhoto" styleClass="form-control col-md-6" value="#{registerAction.personalPhoto}" requiredMessage="Please choose profile image.">
+                                    <f:validateRequired rendered="#{empty registerAction.entity.personalPhoto}"/>
+                                </h:inputFile>
+                            </div>
+                            <div class="col-md-6">
+                                <h:graphicImage styleClass="col-md-6" url="#{generalAction.baseUrl.concat(registerAction.entity.personalPhoto)}"  width="200" height="100"/>
+                            </div>
+                        </div>
+                        <h:message for="personalPhoto" styleClass="errorMsg"/>
+                    </h:panelGroup>
+
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h:panelGroup layout="block" styleClass="form-group">
+
+                        <label for="hobbies">Hobbies</label>
+                        <h:selectManyListbox id="hobbies" styleClass="select-many form-control" value="#{registerAction.hobbiesIds}">
+                            <f:selectItems  value="#{cache.hobbies}" var="hobbie" itemValue="#{hobbie.id}" itemLabel="#{hobbie.name}" />
+                        </h:selectManyListbox>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="selectStudy">Studies / Job</label>
+                        <h:selectManyListbox id="selectStudy" styleClass="select-many" value="#{registerAction.studySelections}"  binding="#{registerAction.studyListbox}">
+                            <f:selectItems value="#{registerAction.studies}" />
+                        </h:selectManyListbox >
+                        <h:message for="selectStudy" class="errorMsg"/>
+
+
+                    </h:panelGroup>
+                </div>
+                <div class="col-md-6">
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="selectService">Services</label>
+                        <h:selectManyListbox id="selectService" styleClass="select-many" value="#{registerAction.serviceSelections}">
+                            <f:selectItems value="#{registerAction.services}" />
+                        </h:selectManyListbox >
+                        <h:message for="selectService" class="errorMsg"/>
+
+
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <label for="selectService">Weekends</label>
+
+                        <h:selectManyListbox id="selectWeekEnds" styleClass="select-many" value="#{registerAction.weekEnds}">
+                            <f:selectItems value="#{registerAction.cache.daysOfWeek}" var="day" itemLabel="#{day.key}" itemValue="#{day.value}"/>
+                        </h:selectManyListbox >
+                        <h:message for="selectService" class="errorMsg"/>
+
+
+                    </h:panelGroup>
+
+                </div>
+            </div>
+
+            <h:commandButton id="submitBtn" styleClass="form-control col-md-6 btn btn-primary" value="save" action="#{registerAction.save()}"/>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+
