@@ -5,9 +5,9 @@
  
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/st_helana" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="url" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/sthelana" />
+        <property name="username" value="adminVPILS8B" />
+        <property name="password" value="K_7v-c39ADru" />
     </bean>
     
  
